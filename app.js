@@ -427,3 +427,225 @@ function printErrors(strMax) {
 }
 console.log(printErrors("Tambo"));
 console.log(printErrors("Soy el señor que tiene calma"));
+
+function diferent(nums) {
+  let par = [];
+  let impar = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 === 0) {
+      par.push(nums[i]);
+    } else {
+      impar.push(nums[i]);
+    }
+  }
+  return par.length === 1 ? par[0] : impar[0];
+}
+console.log(diferent([2, 4, 6, 8, 10, 3]));
+
+function whoLikesIt(arr) {
+  if (arr.length === 0) return "No one like this";
+  if (arr.length === 1) return `${arr[0]} likes this`;
+  if (arr.length === 2) return `${arr[0]} and ${arr[1]} likes this`;
+  if (arr.length === 3) return `${arr[0]} , ${arr[1]} and ${arr[2]} likes this`;
+  return `${arr[0]} , ${arr[1]} and ${[arr.length - 2]} others likes this`;
+}
+console.log(whoLikesIt(["Alex", "Jacob", "Mark", "Max"]));
+
+function orderWord(words) {
+  let arr = words.split(" ");
+  let result = [];
+  for (let i = 1; i <= arr.length; i++) {
+    for (let word of arr) {
+      if (word.includes(i)) {
+        result.push(word);
+      }
+    }
+  }
+  return result.join(" ");
+}
+console.log(orderWord("is2 Thi1s T4est 3a"));
+
+function sumMultiples(num) {
+  let result = 0;
+  for (let i = 0; i < num; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      result += i;
+    }
+  }
+  return result;
+}
+console.log(sumMultiples(22));
+console.log(sumMultiples(10));
+
+function inverse(str) {
+  let result = "";
+  let words = str.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > 5) {
+      let inverse = words[i].split("").reverse().join("");
+      result += inverse + " ";
+    } else {
+      result += words[i] + " ";
+    }
+  }
+  return result;
+}
+console.log(inverse("Hey fellow warriors"));
+
+function countChar(str) {
+  let result = {};
+  for (let char of str) {
+    if (result[char]) {
+      result[char]++;
+    } else {
+      result[char] = 1;
+    }
+  }
+  return result;
+}
+console.log(countChar("aba"));
+
+function createPhoneNumber(arr) {
+  let format = "(xxx) xxx-xxxx";
+  for (let i = 0; i < arr.length; i++) {
+    format = format.replace("x", arr[i]);
+  }
+  return format;
+}
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+function createPhoneNumber(arr) {
+  return (
+    "(" +
+    arr.slice(0, 3).join("") +
+    ")" +
+    " " +
+    arr.slice(3, 6).join("") +
+    "-" +
+    arr.slice(6, 10).join("")
+  );
+}
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+function findOdd(arr) {
+  return arr.find((num) => arr.filter((n) => n === num).length % 2 !== 0);
+}
+console.log(findOdd([1, 1, 2]));
+
+function encontrarimparveces(arr) {
+  return arr.find((num) => arr.filter((n) => n === num).length % 2 !== 0);
+}
+console.log(encontrarimparveces([1, 1, 2, 2, 3, 3, 4, 4, 5]));
+
+function camelCase(str) {
+  return str
+    .split(" ")
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(" ");
+}
+console.log(camelCase("hola martin"));
+
+function digitalRoot(n) {
+  while (n >= 10) {
+    let sum = 0;
+    for (let digit of n.toString()) {
+      sum += parseInt(digit);
+    }
+    n = sum;
+  }
+  return n;
+}
+console.log(digitalRoot(94222));
+
+function sumdigits(num) {
+  while (num >= 10) {
+    let sum = 0;
+    for (let char of num.toString()) {
+      sum += parseInt(char);
+    }
+    num = sum;
+  }
+  return num;
+}
+console.log(sumdigits(44));
+
+function alphabet(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let words = str.toLowerCase();
+  for (let char of alphabet) {
+    if (!words.includes(char)) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(alphabet("The quick brown fox jumps over the lazy dog"));
+console.log(alphabet("Hola Pepe"));
+
+function deleteDuplicates(str) {
+  let newStr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== str[i - 1]) {
+      newStr.push(str[i]);
+    }
+  }
+  return newStr;
+}
+console.log(deleteDuplicates("AAAABBBCCDAABBB"));
+
+function deleteStr(str) {
+  return str.split("").filter(function (char, index, arr) {
+    return char !== arr[index - 1];
+  });
+}
+console.log(deleteStr("AAAABBBCCDAABBB"));
+
+function sumPositives(arr) {
+  let min1 = Infinity;
+  let min2 = Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min1) {
+      min1 = min2;
+      min1 = arr[i];
+    } else if (arr[i] < min2) {
+      min2 = arr[i];
+    }
+  }
+  return min1 + min2;
+}
+console.log(sumPositives([5, 8, 12, 18, 22]));
+
+function sumPositives2(arr) {
+  let sort = arr.sort((a, b) => a - b);
+  return sort[0] + sort[1];
+}
+console.log(sumPositives2([5, 8, 12, 18, 22]));
+
+function aNotInB(arr1, arr2) {
+  return arr1.filter((x) => !arr2.includes(x));
+}
+console.log(aNotInB([1, 2, 2, 2, 3], [2]));
+
+function aNotInB2(arr1, arr2) {
+  let result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (!arr2.includes(arr1[i])) {
+      result.push(arr1[i]);
+    }
+  }
+  return result;
+}
+console.log(aNotInB2([1, 2, 2, 2, 3], [2]));
+
+function smile(arr) {
+  let smile = ":)";
+  let smile2 = ":-D";
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === smile || arr[i] === smile2) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(smile([":)", ";(", ";}", ":-D"]));
