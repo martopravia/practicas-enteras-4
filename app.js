@@ -977,3 +977,372 @@ function toUpper(str) {
   return str.toUpperCase();
 }
 console.log(toUpper("hola Pepe"));
+
+function toUpper2(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    newStr += str[i].toUpperCase();
+  }
+  return newStr;
+}
+console.log(toUpper2("hola Pepe"));
+
+function basicMath(operation, val1, val2) {
+  if (operation === "/") return val1 / val2;
+  if (operation === "*") return val1 * val2;
+  if (operation === "-") return val1 - val2;
+  if (operation === "+") return val1 + val2;
+  if (operation === "%") return val1 % val2;
+}
+console.log(basicMath("/", 4, 2));
+
+function opposite(num) {
+  return -num;
+}
+console.log(opposite(4));
+console.log(opposite(-4));
+
+function opposite2(num) {
+  return num * -1;
+}
+console.log(opposite2(4));
+console.log(opposite2(-4));
+
+function negative(num) {
+  if (num > 0) return -num;
+  return num;
+}
+console.log(negative(4));
+console.log(negative(-44));
+
+function negative2(num) {
+  return num > 0 ? -num : num;
+}
+console.log(negative2(4));
+console.log(negative2(-44));
+
+function countingSheep(arr) {
+  return arr.filter(Boolean).length;
+}
+console.log(countingSheep([false, false, true, true, true]));
+
+function abbreviate(name) {
+  newName = name.split(" ");
+  return newName[0][0].toUpperCase() + "." + newName[1][0].toUpperCase() + ".";
+}
+console.log(abbreviate("Martín Pravia"));
+
+function abbreviate2(name) {
+  return (
+    name
+      .split(" ")
+      .map((word) => word[0].toUpperCase())
+      .join(".") + "."
+  );
+}
+console.log(abbreviate2("Martín Pravia"));
+
+function removeSpaces(str) {
+  newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") {
+      newStr += str[i];
+    }
+  }
+  return newStr;
+}
+console.log(removeSpaces("Hola como estas"));
+
+function doubleInteger(num) {
+  return num * 2;
+}
+console.log(doubleInteger(8));
+
+function getTheMiddle(str) {
+  let len = str.length;
+  if (len % 2 === 0) {
+    return str[len / 2 - 1] + str[len / 2];
+  } else {
+    return str[Math.floor(len / 2)];
+  }
+}
+console.log(getTheMiddle("Hola"));
+console.log(getTheMiddle("Perfect"));
+
+function getTheMiddle2(str) {
+  return str.length % 2 === 0
+    ? str[str.length / 2 - 1] + str[str.length / 2]
+    : str[Math.floor(str.length / 2)];
+}
+console.log(getTheMiddle2("Hola"));
+console.log(getTheMiddle2("Perfect"));
+
+function highAndLow(str) {
+  let numbers = str.split(" ").map(Number);
+  return Math.max(...numbers) + " " + Math.min(...numbers);
+}
+console.log(highAndLow("4 2 6 9 1111 -44"));
+
+function highAndLow2(str) {
+  let num = str.split(" ").map(Number);
+  let min = 0;
+  let max = 0;
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] < min) min = num[i];
+    if (num[i] > max) max = num[i];
+  }
+  return `${max} ${min}`;
+}
+console.log(highAndLow2("4 2 6 9 1111 -44"));
+
+function mumbling(str) {
+  let newStr = "";
+  for (let i = 0; i < str.length; i++) {
+    newStr += str[i].toUpperCase() + str[i].toLowerCase().repeat(i);
+    if (i < str.length - 1) newStr += "-";
+  }
+  return newStr;
+}
+console.log(mumbling("hola"));
+
+function mumbling2(str) {
+  return str
+    .split("")
+    .map((word, index) => word.toUpperCase() + word.toLowerCase().repeat(index))
+    .join("-");
+}
+console.log(mumbling2("hola"));
+
+function descending(number) {
+  return number
+    .toString()
+    .split("")
+    .sort((a, b) => b - a)
+    .join("");
+}
+console.log(descending(123489));
+
+function shortestWord(str) {
+  return Math.min(...str.split(" ").map((word) => word.length));
+}
+console.log(shortestWord("hola mi cielo como dice que esta usted"));
+
+function shortestWord2(str) {
+  let words = str.split(" ");
+  let min = words[0].length;
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length < min) {
+      min = words[i].length;
+    }
+  }
+  return min;
+}
+console.log(shortestWord2("hola mi cielo como dice que esta usted"));
+
+function isIsogram(str) {
+  str = str.toLowerCase();
+  for (let i = 0; i < str.length; i++) {
+    if (str.indexOf(str[i]) !== str.lastIndexOf(str[i])) return false;
+  }
+  return true;
+}
+console.log(isIsogram("Alla"));
+console.log(isIsogram("Ale"));
+
+function isIsogram2(str) {
+  return new Set(str.toLowerCase()).size === str.length;
+}
+console.log(isIsogram2("Alla"));
+console.log(isIsogram2("Ale"));
+
+function xAndOs(str) {
+  let x = 0;
+  let o = 0;
+  let strLow = str.toLowerCase();
+  for (let char of strLow) {
+    if (char === "x") x++;
+    if (char === "o") o++;
+  }
+  if (x === o) return true;
+  else return false;
+}
+console.log(xAndOs("x o o o x x"));
+console.log(xAndOs("x o o x x"));
+
+function xAndOs2(str) {
+  return (
+    str
+      .toLowercase()
+      .split("")
+      .filter((char) => char === "o").length ===
+    str
+      .toLowerCase()
+      .split("")
+      .filter((char) => char === "x").length
+  );
+}
+console.log(xAndOs("x o o x x"));
+console.log(xAndOs("x o o x"));
+
+function notVowels(str) {
+  let newStr = str.split("");
+  let finalStr = "";
+  for (char of newStr) {
+    if (!"aeiouAEIOUáéíóú".includes(char)) {
+      finalStr += char;
+    }
+  }
+  return finalStr;
+}
+console.log(notVowels("Hola Andres, cómo estás"));
+
+function notVowels2(str) {
+  return str
+    .split("")
+    .filter((char) => !"aeiouAEIOUáéíóú".includes(char))
+    .join("");
+}
+console.log(notVowels2("Hola Andres, cómo estás"));
+
+function capitalizeFirst(str) {
+  let words = str.split(" ");
+  let newStr = "";
+  for (let word of words) {
+    newStr += word[0].toUpperCase() + word.slice(1) + " ";
+  }
+  return newStr;
+}
+console.log(capitalizeFirst("hola como estas"));
+
+function capitalizeFirst2(str) {
+  return str
+    .split(" ")
+    .map((word) => word[0].toUpperCase() + word.slice(1) + " ")
+    .join("");
+}
+console.log(capitalizeFirst2("hola como estas"));
+
+function squareDigits(num) {
+  let result = "";
+  let digits = num.toString();
+  for (let digit of digits) {
+    result += (parseInt(digit) ** 2).toString();
+  }
+  return parseInt(result);
+}
+console.log(squareDigits(225));
+
+function squareDigits2(num) {
+  return Number(
+    num
+      .toString()
+      .split("")
+      .map((digit) => digit ** 2)
+      .join("")
+  );
+}
+console.log(squareDigits2(225));
+
+function binaryAdd(num1, num2) {
+  return (num1 + num2).toString(2);
+}
+console.log(binaryAdd(3, 5));
+
+function divisor(num) {
+  let count = 0;
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) count++;
+  }
+  return count;
+}
+console.log(divisor(555));
+
+function countVowels(str) {
+  let count = 0;
+  let vowels = "aeiouAEIOUáéíóú";
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countVowels("aveces soy loco"));
+
+function beyondM(str) {
+  let strLow = str.toLowerCase();
+  let result = 0;
+  for (let i = 0; i < strLow.length; i++) {
+    if (strLow[i] > "m") result++;
+  }
+  return (result / strLow.length) * 100 + "%";
+}
+console.log(beyondM("hola maria que dice?"));
+
+function sumPositives(arr) {
+  let result = 0;
+  for (num of arr) {
+    if (num > 0) {
+      result += num;
+    }
+  }
+  return result;
+}
+console.log(sumPositives([-1, 2, 3, 10, 2, -22]));
+
+function sumPositives2(arr) {
+  return Number(arr.filter((num) => num > 0).reduce((acum, val) => acum + val));
+}
+console.log(sumPositives2([-1, 2, 3, 10, 2, -22]));
+
+function palindrome(str) {
+  let word = str.toLowerCase();
+  let result = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i].toLowerCase();
+  }
+  return word === result;
+}
+console.log(palindrome("hola"));
+console.log(palindrome("alola"));
+
+function palindrome2(str) {
+  return str.toLowerCase() === str.split("").reverse().join("").toLowerCase();
+}
+console.log(palindrome2("hola"));
+console.log(palindrome2("Alola"));
+
+function theSame(arr) {
+  let first = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== first) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(theSame([2, 2, 2, 2]));
+console.log(theSame([2, 2, 3, 2]));
+
+function theSame2(arr) {
+  return arr.every((x) => x === arr[0]);
+}
+console.log(theSame2([2, 2, 2, 2]));
+console.log(theSame2([2, 2, 3, 2]));
+
+function theEndString(str1, str2) {
+  let str = str1.split(" ");
+  if (str[str.length - 1].toLowerCase() === str2.toLowerCase()) {
+    return true;
+  }
+  return false;
+}
+console.log(theEndString("Hola Mundo", "mundo"));
+console.log(theEndString("Hola Mundo", "pundo"));
+
+function theEndString2(str1, str2) {
+  let words = str1.split(" ");
+  return words[words.length - 1].toLowerCase() === str2.toLowerCase();
+}
+console.log(theEndString2("Hola Mundo", "mundo"));
+console.log(theEndString2("Hola Mundo", "pundo"));
