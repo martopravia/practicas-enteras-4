@@ -1346,3 +1346,192 @@ function theEndString2(str1, str2) {
 }
 console.log(theEndString2("Hola Mundo", "mundo"));
 console.log(theEndString2("Hola Mundo", "pundo"));
+
+function capitalizeWords(str) {
+  let words = str.split(" ");
+  let result = "";
+  for (let word of words) {
+    result += word[0].toUpperCase() + word.slice(1).toLowerCase() + " ";
+  }
+  return result;
+}
+console.log(capitalizeWords("hola mundo"));
+
+function capitalizeWords2(str) {
+  return str
+    .split(" ")
+    .map((word) => word[0].toUpperCase + word.slice(1).toLowerCase() + " ");
+}
+console.log(capitalizeWords("hola mundo"));
+
+function invertManually(arr) {
+  let result = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+  return result;
+}
+console.log(invertManually([3, 2, 1]));
+
+function invertManually2(arr) {
+  return arr.slice().reverse();
+}
+console.log(invertManually2([3, 2, 1]));
+
+function duplicateLetter(str) {
+  let result = "";
+  for (let i = 0; i < str.length; i++) {
+    result += str[i] + str[i];
+  }
+  return result;
+}
+console.log(duplicateLetter("hola"));
+
+function duplicateLetter2(str) {
+  return str
+    .split("")
+    .map((letter) => letter + letter)
+    .join("");
+}
+console.log(duplicateLetter2("hola"));
+
+function countVowels(str) {
+  let vowels = "aeiouAEIOUáéíóúÁÉÍÓÚ";
+  return str.split("").filter((word) => vowels.includes(word.toLowerCase()))
+    .length;
+}
+console.log(countVowels("hola pepe"));
+console.log(countVowels("Otorrinolaringologo"));
+console.log(countVowels("xxxsss"));
+
+function countVowels2(str) {
+  let vowels = "aeiouAEIOUáéíóúÁÉÍÓÚ";
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) count++;
+  }
+  return count;
+}
+console.log(countVowels2("hola pepe"));
+console.log(countVowels2("Otorrinolaringologo"));
+console.log(countVowels2("xxxsss"));
+
+function oddNum(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j]) count++;
+    }
+    if (count % 2 !== 0) return arr[i];
+  }
+}
+console.log(oddNum([1, 1, 2, 2, 3, 4, 4]));
+
+function oddNum2(arr) {
+  return arr.find((num) => arr.filter((n) => n === num).length % 2 !== 0);
+}
+console.log(oddNum2([1, 1, 2, 2, 3, 4, 4]));
+
+function oddNum3(arr) {
+  return arr.find((num) => arr.filter((n) => n === num).length % 2 !== 0);
+}
+
+function squareNum(num) {
+  return Number(
+    num
+      .toString()
+      .split("")
+      .map((n) => n ** 2)
+      .join("")
+  );
+}
+console.log(squareNum(9119));
+
+function squareNum2(num) {
+  let result = "";
+  let str = num.toString();
+  for (let i = 0; i < str.length; i++) {
+    result += str[i] ** 2;
+  }
+  return Number(result);
+}
+console.log(squareNum2(9119));
+
+function sumPos(arr) {
+  return arr.filter((num) => num > 0).reduce((acc, val) => acc + val, 0);
+}
+console.log(sumPos([1, -4, 7, 12]));
+
+function sumPos2(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+}
+console.log(sumPos2([1, -4, 7, 12]));
+
+function lowestNum(arr) {
+  return Math.min(...arr);
+}
+console.log(lowestNum([34, 15, 88, 2]));
+
+function lowestNum2(arr) {
+  let min = Infinity;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  return min;
+}
+console.log(lowestNum2([34, 15, 88, 2]));
+
+function multiplyArr(arr, num) {
+  return arr.map((number) => number * num);
+}
+console.log(multiplyArr([1, 2, 3], 2));
+
+function multiplyArr2(arr, num) {
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i] * num);
+  }
+  return result;
+}
+console.log(multiplyArr2([2, 4, 6], 10));
+
+function palindrome(str) {
+  return str.toLowerCase() === str.split("").reverse().join("").toLowerCase();
+}
+console.log(palindrome("racecar"));
+console.log(palindrome("pepe"));
+
+function palindrome2(str) {
+  let word = str;
+  let result = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    result += str[i];
+  }
+  return word === result;
+}
+console.log(palindrome2("racecar"));
+console.log(palindrome2("pepe"));
+
+function countEven(arr) {
+  return arr.filter((num) => num % 2 === 0).length;
+}
+console.log(countEven([1, 2, 3, 4, 5, 6]));
+
+function countEven2(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countEven2([1, 2, 3, 4, 5, 6]));
