@@ -1535,3 +1535,204 @@ function countEven2(arr) {
   return count;
 }
 console.log(countEven2([1, 2, 3, 4, 5, 6]));
+
+function numberAlone(arr) {
+  return arr.find((num) => arr.filter((n) => n === num).length === 1);
+}
+console.log(numberAlone([4, 1, 2, 1, 2]));
+
+function numberAlone2(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        count++;
+      }
+    }
+    if (count === 1) {
+      return arr[i];
+    }
+  }
+}
+console.log(numberAlone2([4, 1, 2, 1, 2]));
+
+function anagram(arr) {
+  let group = {};
+  for (let i = 0; i < arr.length; i++) {
+    let sorted = arr[i].split("").sort().join();
+    if (!group[sorted]) {
+      group[sorted] = [arr[i]];
+    } else {
+      group[sorted].push(arr[i]);
+    }
+  }
+  return Object.values(group);
+}
+console.log(anagram(["bat", "tab", "tap", "pat"]));
+
+function anagram2(arr) {
+  let group = {};
+  for (let i = 0; i < arr.length; i++) {
+    let sorted = arr[i].split("").sort().join("");
+    if (!group[sorted]) {
+      group[sorted] = [arr[i]];
+    } else {
+      group[sorted].push(arr[i]);
+    }
+  }
+  return Object.values(group);
+}
+console.log(anagram2(["bat", "tab", "tap", "pat"]));
+
+function anagram3Practice(arr) {
+  let group = {};
+  for (let i = 0; i < arr.length; i++) {
+    let sorted = arr[i].split("").sort().join("");
+    if (!group[sorted]) {
+      group[sorted] = [arr[i]];
+    } else {
+      group[sorted].push(arr[i]);
+    }
+  }
+  return Object.values(group);
+}
+
+function diference2(arr1, arr2) {
+  return arr1.filter((num) => !arr2.includes(num));
+}
+console.log(diference2([1, 2, 2, 3], [2]));
+
+function diference(arr1, arr2) {
+  return arr1.filter((num) => !arr2.includes(num));
+}
+console.log(diference([1, 2, 2, 3], [3]));
+
+function diference3(arr1, arr2) {
+  let result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (!arr2.includes(arr1[i])) {
+      result.push(arr1[i]);
+    }
+  }
+  return result;
+}
+console.log(diference3([1, 2, 2, 3], [3]));
+
+function orderOdd(arr) {
+  let newArr = [];
+  let odd = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      odd.push(arr[i]);
+    }
+  }
+  odd.sort((a, b) => a - b);
+  let oddIndex = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 !== 0) {
+      newArr.push(odd[oddIndex]);
+      oddIndex++;
+    } else {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+console.log(orderOdd([5, 3, 2, 8, 1, 4]));
+
+function orderOdd2(arr) {
+  let odd = arr.filter((num) => num % 2 !== 0).sort((a, b) => a - b);
+  return arr.map((x) => (x % 2 ? odd.shift() : x));
+}
+console.log(orderOdd2([5, 3, 2, 8, 1, 4]));
+
+function capitalizeDouble(str) {
+  let odd = "";
+  let even = "";
+  for (let i = 0; i < str.length; i++) {
+    if (i % 2 === 0) {
+      odd += str[i].toUpperCase();
+      even += str[i];
+    } else {
+      odd += str[i];
+      even += str[i].toUpperCase();
+    }
+  }
+  return [even, odd];
+}
+console.log(capitalizeDouble("hola"));
+
+function capitalizeDouble2(str) {
+  let even = str
+    .split("")
+    .map((char, index) => (index % 2 === 0 ? char.toUpperCase() : char))
+    .join("");
+  let odd = str
+    .split("")
+    .map((char, index) => (index % 2 !== 0 ? char.toUpperCase() : char))
+    .join("");
+  return [even, odd];
+}
+console.log(capitalizeDouble2("hola"));
+
+function deleteLetter(str1, str2) {
+  return str1
+    .split("")
+    .filter((letter) => !str2.includes(letter))
+    .join("");
+}
+console.log(deleteLetter("hola", "ol"));
+
+function deleteSecond(str1, str2) {
+  let newStr = "";
+  for (let i = 0; i < str1.length; i++) {
+    if (!str2.includes(str1[i])) {
+      newStr += str1[i];
+    }
+  }
+  return newStr;
+}
+console.log(deleteSecond("hello", "el"));
+
+function intercalarArr(arr1, arr2) {
+  let newArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    newArr.push(arr1[i], arr2[i]);
+  }
+  return newArr;
+}
+console.log(intercalarArr([1, 2, 3], [4, 5, 6]));
+
+function intercalar(arr1, arr2) {
+  return arr1.flatMap((num, i) => [num, arr2[i]]);
+}
+console.log(intercalar([1, 2, 3], [4, 5, 6]));
+
+function firstChar(str) {
+  return (
+    str.split("").find((char) => str.indexOf(char) === str.lastIndexOf(char)) ||
+    null
+  );
+}
+console.log(firstChar("abacabad"));
+
+function firstChar2(str) {
+  for (let i = 0; i < str.length; i++) {
+    if (str.indexOf(str[i]) === str.lastIndexOf(str[i])) {
+      return str[i];
+    }
+  }
+  return null;
+}
+console.log(firstChar2("abacabad"));
+
+function maxSum(arr) {
+  let maxSum = 0;
+  let currentSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    currentSum = Math.max(0, currentSum + arr[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+  return maxSum;
+}
+console.log(maxSum([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
